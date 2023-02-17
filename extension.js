@@ -134,6 +134,7 @@ class Extension {
         this._uuid = uuid;
         this._a11yApplicationsSettings = new Gio.Settings({ schema_id: A11Y_APPLICATIONS_SCHEMA });
 
+        this.backup_loadDefaultKeys = Keyboard.Keyboard.prototype['_loadDefaultKeys'];
         this.backup_getDefaultKeysForRow = Keyboard.Keyboard.prototype['_getDefaultKeysForRow'];
         this.backup_onGroupChanged = Keyboard.Keyboard.prototype['_onGroupChanged'];
         this.backup_relayout = Keyboard.Keyboard.prototype['_relayout'];

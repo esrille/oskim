@@ -125,6 +125,85 @@ function override_loadModel(groupName) {
     return layout;
 }
 
+/* OSKIM:
+ * Fix long press handling of shift keys in 42.5 just tentatively.
+ *   cf. https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/5600
+ * Enable Emoji by default.
+ *   cf. https://gitlab.gnome.org/GNOME/gnome-shell/-/issues/5968
+ */
+function override_loadDefaultKeys(keys, layout, numLevels, numKeys) {
+    let extraButton;
+    for (let i = 0; i < keys.length; i++) {
+        let key = keys[i];
+        let keyval = key.keyval;
+        let switchToLevel = key.level;
+        let action = key.action;
+        let icon = key.icon;
+
+        extraButton = new Keyboard.Key(key.label || '', [], icon);
+
+        extraButton.keyButton.add_style_class_name('default-key');
+        if (key.extraClassName != null)
+            extraButton.keyButton.add_style_class_name(key.extraClassName);
+        if (key.width != null)
+            extraButton.setWidth(key.width);
+
+        let actor = extraButton.keyButton;
+
+        extraButton.connect('pressed', () => {
+            if (switchToLevel != null) {
+                /* OSKIM: Do not change the active layer here so that we can cancel
+                 * 'long-press' timer later.
+                 */
+                // Shift only gets latched on long press
+                this._latched = switchToLevel != 1;
+            } else if (keyval != null) {
+                this._keyboardController.keyvalPress(keyval);
+            }
+        });
+        extraButton.connect('released', () => {
+            if (switchToLevel != null) {
+                this._setActiveLayer(switchToLevel);
+                if (switchToLevel == 1 && this._latched)
+                    this._setCurrentLevelLatched(this._currentPage, this._latched);
+            } else if (keyval != null)
+                this._keyboardController.keyvalRelease(keyval);
+            else if (action == 'hide')
+                this.close();
+            else if (action == 'languageMenu')
+                this._popupLanguageMenu(actor);
+            else if (action == 'emoji')
+                this._toggleEmoji();
+        });
+
+        if (switchToLevel == 0) {
+            layout.shiftKeys.push(extraButton);
+        } else if (switchToLevel == 1) {
+            extraButton.connect('long-press', () => {
+                this._latched = true;
+            });
+        }
+
+        /* Fixup default keys based on the number of levels/keys */
+        if (switchToLevel == 1 && numLevels == 3) {
+            // Hide shift key if the keymap has no uppercase level
+            if (key.right) {
+                /* Only hide the key actor, so the container still takes space */
+                extraButton.keyButton.hide();
+            } else {
+                extraButton.hide();
+            }ぬぬ
+            extraButton.setWidth(1.5);
+        } else if (key.right && numKeys > 8) {
+            extraButton.setWidth(2);
+        } else if (keyval == Clutter.KEY_Return && numKeys > 9) {
+            extraButton.setWidth(1.5);
+        }
+
+        layout.appendKey(extraButton, extraButton.keyButton.keyWidth);
+    }
+}
+
 /* OSKIM: Use defaultKeysPre and defaultKeysPost defined in this file.
  */
 function override_getDefaultKeysForRow(row, numRows, level) {
@@ -296,6 +375,7 @@ var IbusHiraganaModel = class {
         log('IbusHiraganaModel.enable');
         this._xkbLayout = Utils.getXkbLayout();
 
+        Keyboard.Keyboard.prototype['_loadDefaultKeys'] = override_loadDefaultKeys;
         Keyboard.Keyboard.prototype['_getDefaultKeysForRow'] = override_getDefaultKeysForRow;
         Keyboard.Keyboard.prototype['_relayout'] = override_relayout;
         Keyboard.Keyboard.prototype['_setActiveLayer'] = override_setActiveLayer;
@@ -311,6 +391,7 @@ var IbusHiraganaModel = class {
     disable(extension) {
         log('IbusHiraganaModel.disable');
 
+        Keyboard.Keyboard.prototype['_loadDefaultKeys'] = extension.backup_loadDefaultKeys;
         Keyboard.Keyboard.prototype['_getDefaultKeysForRow'] = extension.backup_getDefaultKeysForRow;
         Keyboard.Keyboard.prototype['_relayout'] = extension.backup_relayout;
         Keyboard.Keyboard.prototype['_setActiveLayer'] = extension.backup_setActiveLayer;
