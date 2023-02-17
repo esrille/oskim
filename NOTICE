@@ -1,0 +1,46 @@
+On-Screen Keyboard improved for Input Methods
+Copyright 2023 Esrille Inc.
+https://github.com/esrille/oskim
+
+This product includes software developed at,
+Esrille Inc. (http://www.esrille.com/).
+
+Except as otherwise noted, the content of this software are licensed
+under the GNU General Public License, version 2 or later.
+
+Please consult,
+    https://github.com/esrille/oskim/issues
+for how to report problems.
+
+== Esrille Logo Marks ==
+
+Esrille logo marks are trademarks of Esrille Inc. All rights reserved.
+
+Esrille logo marks, including the es shield logo, are special trademarks
+to identify the products being developed and distributed by Esrille Inc.
+
+Esrille logo marks can be used by anyone if that use of the logo marks
+is nominative. The "nominative use" authorizes everyone (even commercial
+companies) to use the trademark of another if:
+
+  1. The product or service cannot be readily identified without use of
+     the trademark;
+  2. The user only uses as much of the mark as is necessary to identify
+     the product or service; and,
+  3. The user does nothing to suggest sponsorship or endorsement by the
+     trademark holder.
+
+== Credits ==
+
+This product uses the source code derived from,
+    GNOME Shell
+GNOME Shell is licensed under the terms of the GPL-2.0-or-later.
+The original software is available from,
+    https://wiki.gnome.org/Projects/GnomeShell
+
+Like the other GNOME On-Screen Keyboard extensions, this product uses
+the basic On-Screen Keyboard extension mechanism developed from,
+    https://github.com/schuhumi/gnome-shell-extension-improve-osk
+
+Indicator, a keyboard button shown in the top bar, is based on the work at,
+    https://github.com/Bradan/Gnome-On-Screen-Keyboard-Button

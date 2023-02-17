@@ -1,0 +1,8 @@
+{
+  "name": "On-Screen Keyboard improved for Input Methods",
+  "description": "Extend GNOME On-Screen Keyboard for Input Methods",
+  "uuid": "oskim@esrille.com",
+  "shell-version": [
+    "42"
+  ]
+}
