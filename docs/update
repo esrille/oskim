@@ -1,0 +1,3 @@
+#!/bin/sh
+./md2html.py index.md ibus-hiragana.md ibus-hiragana.md
+./md2html.py ibus-hiragana.md index.md index.md
