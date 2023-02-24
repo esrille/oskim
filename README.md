@@ -7,11 +7,23 @@ OSKIM has been tested with GNOME 42.5 on Ubuntu 22.04 LTS. We will support newer
 
 ## Installation
 
-Clone this repository under the GNOME shell extensions directory as below:
+### 1a. Install the OSKIM bundle downloaded from [Releases](https://github.com/esrille/oskim/releases)
+
+Download the OSKIM bundle from [Releases](https://github.com/esrille/oskim/releases) and install it by running the following command:
+
+```
+$ gnome-extensions install oskim@esrille.com-0.0.0.shell-extension.zip
+```
+
+### 1b. Install from this repository
+
+Alternatively, you can clone the OSKIM repository under the GNOME shell extensions directory as below:
 
 ```
 $ git clone https://github.com/esrille/oskim.git ~/.local/share/gnome-shell/extensions/oskim@esrille.com
 ```
+
+### 2. Enable OSKIM
 
 Enable OSKIM by running the following command:
 

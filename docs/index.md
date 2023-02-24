@@ -15,11 +15,24 @@
 
 ## インストール￹方法￺ほうほう￻
 
-　OSKIMのレポジトリをGNOMEシェル￹拡張￺かくちょう￻￹用￺よう￻のディレクトリのなかにつくります:
+### 1a. OSKIMのバンドルをダウンロードしてインストール
+
+　まず、OSKIMのバンドルを[Releases](https://github.com/esrille/oskim/releases)ページからダウンロードします。
+つづいて、つぎのコマンドを￹実行￺じっこう￻して、OSKIMをインストールします。
+
+```
+$ gnome-extensions install oskim@esrille.com-0.0.0.shell-extension.zip
+```
+
+### 1b. OSKIMのレポジトリからインストール
+
+　OSKIMのレポジトリをGNOMEシェル￹拡張￺かくちょう￻￹用￺よう￻のディレクトリのなかにつくってインストールすることもできます:
 
 ```
 $ git clone https://github.com/esrille/oskim.git ~/.local/share/gnome-shell/extensions/oskim@esrille.com
 ```
+
+### 2. OSKIMを￹有効￺ゆうこう￻にする
 
 　つぎのコマンドを￹実行￺じっこう￻して、OSKIMを￹有効￺ゆうこう￻にします:
 
@@ -28,6 +41,9 @@ $ gnome-extensions enable oskim@esrille.com
 ```
 
 　コマンドラインツールのかわりにGUIツールを￹利用￺りよう￻したいときは、[Extension Manager](https://github.com/mjakeman/extension-manager)を￹利用￺りよう￻することもできます。
+
+### 3. GNOME Shellをリスタートする
+
 　あたらしいGNOME Shell extensionをつかうためには、GNOME Shellをリスタートしないといけません。
 リスタートするには、いちど、ログインしなおします。（X11のときは、<span class='key'>Alt</span>+<span class='key'>F2</span>をおして、restartコマンドを￹実行￺じっこう￻すればリスタートできます。）
 　OSKIMがうごいていると、トップバーにキーボードのアイコンが￹表示￺ひょうじ￻されます。

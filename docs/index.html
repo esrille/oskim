@@ -47,13 +47,20 @@ aside a:hover {
 
 <p>&#x3000;OSKIMは、Ubuntu 22.04 LTS<ruby>上<rp>(</rp><rt>じょう</rt><rp>)</rp></ruby>のGNOME 42.5でテストしています。よりあたらしいバージョンのGNOME Shellについては、<ruby>今後<rp>(</rp><rt>こんご</rt><rp>)</rp></ruby>、サポートしていきます。</p>
 <h2>インストール<ruby>方法<rp>(</rp><rt>ほうほう</rt><rp>)</rp></ruby></h2>
-<p>&#x3000;OSKIMのレポジトリをGNOMEシェル<ruby>拡張<rp>(</rp><rt>かくちょう</rt><rp>)</rp></ruby><ruby>用<rp>(</rp><rt>よう</rt><rp>)</rp></ruby>のディレクトリのなかにつくります:</p>
+<h3>1a. OSKIMのバンドルをダウンロードしてインストール</h3>
+<p>&#x3000;まず、OSKIMのバンドルを<a href="https://github.com/esrille/oskim/releases">Releases</a>ページからダウンロードします。つづいて、つぎのコマンドを<ruby>実行<rp>(</rp><rt>じっこう</rt><rp>)</rp></ruby>して、OSKIMをインストールします。</p>
+<pre><code>$ gnome-extensions install oskim@esrille.com-0.0.0.shell-extension.zip
+</code></pre>
+<h3>1b. OSKIMのレポジトリからインストール</h3>
+<p>&#x3000;OSKIMのレポジトリをGNOMEシェル<ruby>拡張<rp>(</rp><rt>かくちょう</rt><rp>)</rp></ruby><ruby>用<rp>(</rp><rt>よう</rt><rp>)</rp></ruby>のディレクトリのなかにつくってインストールすることもできます:</p>
 <pre><code>$ git clone https://github.com/esrille/oskim.git ~/.local/share/gnome-shell/extensions/oskim@esrille.com
 </code></pre>
+<h3>2. OSKIMを<ruby>有効<rp>(</rp><rt>ゆうこう</rt><rp>)</rp></ruby>にする</h3>
 <p>&#x3000;つぎのコマンドを<ruby>実行<rp>(</rp><rt>じっこう</rt><rp>)</rp></ruby>して、OSKIMを<ruby>有効<rp>(</rp><rt>ゆうこう</rt><rp>)</rp></ruby>にします:</p>
 <pre><code>$ gnome-extensions enable oskim@esrille.com
 </code></pre>
 <p>&#x3000;コマンドラインツールのかわりにGUIツールを<ruby>利用<rp>(</rp><rt>りよう</rt><rp>)</rp></ruby>したいときは、<a href="https://github.com/mjakeman/extension-manager">Extension Manager</a>を<ruby>利用<rp>(</rp><rt>りよう</rt><rp>)</rp></ruby>することもできます。</p>
+<h3>3. GNOME Shellをリスタートする</h3>
 <p>&#x3000;あたらしいGNOME Shell extensionをつかうためには、GNOME Shellをリスタートしないといけません。リスタートするには、いちど、ログインしなおします。（X11のときは、<span class='key'>Alt</span>+<span class='key'>F2</span>をおして、restartコマンドを<ruby>実行<rp>(</rp><rt>じっこう</rt><rp>)</rp></ruby>すればリスタートできます。）</p>
 <p>&#x3000;OSKIMがうごいていると、トップバーにキーボードのアイコンが<ruby>表示<rp>(</rp><rt>ひょうじ</rt><rp>)</rp></ruby>されます。このアイコンをタップして、オンスクリーン キーボードを<ruby>表示<rp>(</rp><rt>ひょうじ</rt><rp>)</rp></ruby>したり、とじたりすることもできます。</p>
 <p><br><hr>
